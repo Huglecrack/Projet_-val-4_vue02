@@ -47,7 +47,7 @@
     </article>
   </main>
 
-    <aside>
+  <aside>
     <form class="containerEnvoie" action="#">
       <input type="text" id="Name" placeholder="Nom/Prénom" required><br>
       <input type="text" id="Subject" placeholder="Objet" required><br>
@@ -60,9 +60,9 @@
   <footer>
 
     <div>
-        <a href="https://fr.linkedin.com/in/hugo-leplingard-924793262"><img src="@/assets/images/linkedin.png" alt="linkedin"></a>
-        <a href="@/lien_page/twi.html"><img src="@/assets/images/twitter.png" alt="twitter"></a>
-        <a href="https://github.com/Huglecrack/CV_en__ligne_SFLL"><img src="@/assets/images/github.png" alt="github"></a>
+      <a href="https://fr.linkedin.com/in/hugo-leplingard-924793262"><img src="@/assets/images/linkedin.png" alt="linkedin"></a>
+      <a href="@/lien_page/twi.html"><img src="@/assets/images/twitter.png" alt="twitter"></a>
+      <a href="https://github.com/Huglecrack/Projet_-val-4_vue02.git"><img src="@/assets/images/github.png" alt="github"></a>
     </div>
 
     <p>Dernière mise à jour le 20 mars 2024</p>
@@ -106,7 +106,7 @@
     width: 100%;
     top: 0;
     left: 0;
-    background-color:#5c5c5c;
+    background-color:#2d2d2d;
     position: fixed;
     z-index: 1;
   }
@@ -136,15 +136,15 @@
   }
 
   header ul .home {
-      background-color: #4fffdc;
+      background-color: #3024b0;
   }
 
   header ul li:hover {
-      background-color: #1d1d1d;
+      background-color: #080808;
   }
 
   header a.home img:hover {
-      background-color: #1d1d1d;
+      background-color: #080808;
   }
 
   main {
@@ -152,7 +152,7 @@
   } 
 
   main section {
-      margin-left: 40px;
+      margin-left: 60px;
   }
 
   main article {
@@ -168,7 +168,7 @@
       width: 70%;
       height: 90%;
       position: relative;
-      background-color: #1d1d1d;
+      background-color: #2d2d2d;
   }
     
   .fond-image {
@@ -224,10 +224,10 @@
 
   aside form {
       margin-top: 130px;
-      background-color: #5c5c5c;
+      background-color: #2d2d2d;
       padding: 20px;
       border-radius: 8px;
-      box-shadow: 0 0 10px #5c5c5c;
+      box-shadow: 0 0 10px #2d2d2d;
   }
 
   aside form input, textarea {
@@ -236,12 +236,12 @@
       padding: 8px;
       margin-bottom: 16px;
       box-sizing: border-box;
-      border: solid 2px #5c5c5c;
+      border: solid 2px #080808;
       border-radius: 1%;
   }
 
   aside form button {
-      background-color: #4fffdc;
+      background-color: #3024b0;
       padding: 10px 20px;
       border: none;
       border-radius: 4px;
