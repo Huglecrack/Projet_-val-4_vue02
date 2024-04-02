@@ -1,5 +1,4 @@
 <template>
-  <modalBackground/>
 
   <header>
     <ul>
@@ -47,6 +46,8 @@
     </article>
   </main>
 
+  <contenu></contenu>
+
   <aside>
     <form class="containerEnvoie" action="#">
       <input type="text" id="Name" placeholder="Nom/Prénom" required><br>
@@ -73,7 +74,7 @@
 
 
 <script setup>
-  import modalBackground from './components/Modal.vue';
+  import Contenu from './components/contenu.vue';
 
   function EnvoieEmail(e) {
     e.preventdefault();
@@ -168,7 +169,7 @@
     width: 70%;
     height: 90%;
     position: relative;
-    background-color: #2d2d2d;
+    background-color: #080808;
   }
     
   .fond-image {
@@ -242,6 +243,7 @@
 
   aside form button {
     background-color: #3024b0;
+    color: #b7b7ce; 
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
