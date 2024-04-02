@@ -3,8 +3,8 @@
   <header>
     <ul>
       <li class="home"><a href="#"><img src="@/assets/images/accueil.png" alt="logoHome"></a></li>
-      <li><a href="./lien_page/404.html"><img src="@/assets/images/cv.png" alt="logoCV"></a></li>
-      <li><a href="./lien_page/404.html"><img src="@/assets/images/formulaire-de-contact.png" alt="logoFormulaire"></a></li>
+      <li><a href="./liens_pages/404.html"><img src="@/assets/images/cv.png" alt="logoCV" class="headerCV"></a></li>
+      <li><a href="./liens_pages/404.html"><img src="@/assets/images/formulaire-de-contact.png" alt="logoFormulaire" class="headerFDC"></a></li>
     </ul>
   </header>
 
@@ -22,7 +22,7 @@
       <figure>
         <h2>Curiculum Vitae</h2>
 
-        <div class="container">
+        <div class="container01">
           <img src="./assets/images/CVfond.png" alt="CVfond" class="fond-image">
 
           <div class="middle">
@@ -34,7 +34,7 @@
       <figure>
         <h2>Formulaire</h2>
 
-        <div class="container">
+        <div class="container02">
           <img src="./assets/images/formulaireFond.png" alt="formulaireFond"  class="fond-image">
 
           <div class="middle">
@@ -58,15 +58,17 @@
     </form>
   </aside>
 
+  <div class="cube"></div>
+
   <footer>
 
     <div>
       <a href="https://fr.linkedin.com/in/hugo-leplingard-924793262"><img src="@/assets/images/linkedin.png" alt="linkedin"></a>
-      <a href="./lien_page/twi.html"><img src="@/assets/images/twitter.png" alt="twitter"></a>
+      <a href="./liens_pages/twi.html"><img src="@/assets/images/twitter.png" alt="twitter"></a>
       <a href="https://github.com/Huglecrack/Projet_-val-4_vue02.git"><img src="@/assets/images/github.png" alt="github"></a>
     </div>
 
-    <p>Dernière mise à jour le 20 mars 2024</p>
+    <p>Dernière mise à jour le 02 avril 2024</p>
 
   </footer>
 </template>
@@ -165,7 +167,14 @@
     margin: 30px 160px;
   }
 
-  .container {
+  .container01 {
+    width: 70%;
+    height: 90%;
+    position: relative;
+    background-color: #080808;
+  }
+
+  .container02 {
     width: 70%;
     height: 90%;
     position: relative;
@@ -181,7 +190,11 @@
     backface-visibility: hidden;
   }
 
-  .container:hover .fond-image {
+  .container01:hover .fond-image {
+    opacity: 0.3;
+  }
+
+  .container02:hover .fond-image {
     opacity: 0.3;
   }
 
@@ -195,8 +208,20 @@
     -ms-transform: translate(-50%, -50%);
   }
 
-  .container:hover .middle {
+  .container01:hover .middle {
     opacity: 1;
+  }
+
+  .container02:hover .middle {
+    opacity: 1;
+  }
+
+  .container01:hover ~ .headerCV {
+    background-color: #080808
+  }
+
+  .container02:hover ~ .headerFDC {
+    background-color: #080808
   }
 
   .middle img {
@@ -208,13 +233,23 @@
     cursor: zoom-in;
   }
 
-  .container:active .fond-image {
+  .container01:active .fond-image {
     opacity: 1;
     z-index: 1;
     transform:scale(1.5);
   }
 
-  .container:active .middle {
+  .container01:active .middle {
+    opacity: 0;
+  }
+
+  .container02:active .fond-image {
+    opacity: 1;
+    z-index: 1;
+    transform:scale(1.5);
+  }
+
+  .container02:active .middle {
     opacity: 0;
   }
 
@@ -248,6 +283,24 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
+  }
+
+  .cube {
+    opacity: 0;
+    width: 70px;
+    height: 70px;
+    bottom: 0;
+    right: 0;
+    position: fixed;
+    background-color: black;
+    }
+
+  .container01:hover ~ .cube {
+    opacity: 0;
+  }
+
+  .container02:hover ~ .cube {
+    opacity: 0;
   }
 
   footer {
