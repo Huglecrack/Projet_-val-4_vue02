@@ -3,8 +3,8 @@
   <header>
     <ul>
       <li class="home"><a href="#"><img src="@/assets/images/accueil.png" alt="logoHome"></a></li>
-      <li><a href="./liens_pages/404.html"><img src="@/assets/images/cv.png" alt="logoCV" class="headerCV"></a></li>
-      <li><a href="./liens_pages/404.html"><img src="@/assets/images/formulaire-de-contact.png" alt="logoFormulaire" class="headerFDC"></a></li>
+      <li><a href="./liensPages/indexquatrecentsquatre.html"><img src="@/assets/images/cv.png" alt="logoCV" class="headerCV"></a></li>
+      <li><a href="./liensPages/stylequatrecentsquatre.html"><img src="@/assets/images/formulaire-de-contact.png" alt="logoFormulaire" class="headerFDC"></a></li>
     </ul>
   </header>
 
@@ -64,7 +64,7 @@
 
     <div>
       <a href="https://fr.linkedin.com/in/hugo-leplingard-924793262"><img src="@/assets/images/linkedin.png" alt="linkedin"></a>
-      <a href="./liens_pages/twi.html"><img src="@/assets/images/twitter.png" alt="twitter"></a>
+      <a href="./liensPages/twi.html"><img src="@/assets/images/twitter.png" alt="twitter"></a>
       <a href="https://github.com/Huglecrack/Projet_-val-4_vue02.git"><img src="@/assets/images/github.png" alt="github"></a>
     </div>
 
