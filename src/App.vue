@@ -1,11 +1,11 @@
 <template>
-  <Modal/>
+  <modalBackground/>
 
   <header>
     <ul>
       <li class="home"><a href="#"><img src="@/assets/images/accueil.png" alt="logoHome"></a></li>
-      <li><a href="@/lien_page/404.html"><img src="@/assets/images/cv.png" alt="logoCV"></a></li>
-      <li><a href="@/lien_page/404.html"><img src="@/assets/images/formulaire-de-contact.png" alt="logoFormulaire"></a></li>
+      <li><a href="./lien_page/404.html"><img src="@/assets/images/cv.png" alt="logoCV"></a></li>
+      <li><a href="./lien_page/404.html"><img src="@/assets/images/formulaire-de-contact.png" alt="logoFormulaire"></a></li>
     </ul>
   </header>
 
@@ -24,10 +24,10 @@
         <h2>Curiculum Vitae</h2>
 
         <div class="container">
-          <img src="@/assets/images/CVfond.png" alt="CVfond" class="fond-image">
+          <img src="./assets/images/CVfond.png" alt="CVfond" class="fond-image">
 
           <div class="middle">
-            <img src="@/assets/images/cv.png" alt="logoCV">
+            <img src="./assets/images/cv.png" alt="logoCV">
           </div>
         </div>
       </figure>
@@ -36,10 +36,10 @@
         <h2>Formulaire</h2>
 
         <div class="container">
-          <img src="@/assets/images/formulaireFond.png" alt="formulaireFond"  class="fond-image">
+          <img src="./assets/images/formulaireFond.png" alt="formulaireFond"  class="fond-image">
 
           <div class="middle">
-            <img src="@/assets/images/formulaire-de-contact.png" alt="logoFormulaire">
+            <img src="./assets/images/formulaire-de-contact.png" alt="logoFormulaire">
           </div>
         </div>
       </figure>
@@ -61,7 +61,7 @@
 
     <div>
       <a href="https://fr.linkedin.com/in/hugo-leplingard-924793262"><img src="@/assets/images/linkedin.png" alt="linkedin"></a>
-      <a href="@/lien_page/twi.html"><img src="@/assets/images/twitter.png" alt="twitter"></a>
+      <a href="./lien_page/twi.html"><img src="@/assets/images/twitter.png" alt="twitter"></a>
       <a href="https://github.com/Huglecrack/Projet_-val-4_vue02.git"><img src="@/assets/images/github.png" alt="github"></a>
     </div>
 
@@ -73,7 +73,7 @@
 
 
 <script setup>
-  import Modal from '@/components/Modal.vue';
+  import modalBackground from './components/Modal.vue';
 
   function EnvoieEmail(e) {
     e.preventdefault();
@@ -119,160 +119,160 @@
     padding: 0;
     margin: 0;
     transition: all 0.4s ease;
-      text-align: center;
-      justify-content: space-evenly;
-      flex-direction: row;
+    text-align: center;
+    justify-content: space-evenly;
+    flex-direction: row;
   }
 
   header ul li{
-      width: 33.33%;
-      padding: 20px;
-      list-style-type: none;
+    width: 33.33%;
+    padding: 20px;
+    list-style-type: none;
   }
 
   header ul li img {
-      width: 50px;
-      height: 50px;
+    width: 50px;
+    height: 50px;
   }
 
   header ul .home {
-      background-color: #3024b0;
+    background-color: #3024b0;
   }
 
   header ul li:hover {
-      background-color: #080808;
+    background-color: #080808;
   }
 
   header a.home img:hover {
-      background-color: #080808;
+    background-color: #080808;
   }
 
   main {
-      margin-top: 150px;
+    margin-top: 150px;
   } 
 
   main section {
-      margin-left: 60px;
+    margin-left: 80px;
   }
 
   main article {
-      display: flex;
-      justify-content: center;
+    display: flex;
+    justify-content: center;
   }
 
   main article h2 {
-      margin: 30px 160px;
+    margin: 30px 160px;
   }
 
   .container {
-      width: 70%;
-      height: 90%;
-      position: relative;
-      background-color: #2d2d2d;
+    width: 70%;
+    height: 90%;
+    position: relative;
+    background-color: #2d2d2d;
   }
     
   .fond-image {
-      opacity: 1;
-      display: block;
-      width: 100%;
-      height: auto;
-      transition: .5s ease;
-      backface-visibility: hidden;
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
   }
 
   .container:hover .fond-image {
-      opacity: 0.3;
+    opacity: 0.3;
   }
 
   .middle {
-      transition: .5s ease;
-      opacity: 0;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
   }
 
   .container:hover .middle {
-      opacity: 1;
+    opacity: 1;
   }
 
   .middle img {
-      width: 90px;
-      height: 90px;
+    width: 90px;
+    height: 90px;
   }
 
   .middle:hover {
-      cursor: zoom-in;
+    cursor: zoom-in;
   }
 
   .container:active .fond-image {
-      opacity: 1;
-      z-index: 1;
-      transform:scale(1.5);
+    opacity: 1;
+    z-index: 1;
+    transform:scale(1.5);
   }
 
   .container:active .middle {
-      opacity: 0;
+    opacity: 0;
   }
 
   aside {
-      display: flex;
-      justify-content: center;
+    display: flex;
+    justify-content: center;
   }
 
   aside form {
-      margin-top: 130px;
-      background-color: #2d2d2d;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px #2d2d2d;
+    margin-top: 130px;
+    background-color: #2d2d2d;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #2d2d2d;
   }
 
   aside form input, textarea {
-      display: block;
-      width: 500px;
-      padding: 8px;
-      margin-bottom: 16px;
-      box-sizing: border-box;
-      border: solid 2px #080808;
-      border-radius: 1%;
+    display: block;
+    width: 500px;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: solid 2px #080808;
+    border-radius: 1%;
   }
 
   aside form button {
-      background-color: #3024b0;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
+    background-color: #3024b0;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
   }
 
   footer {
-      margin-top: 30px;
-      display: flex;
-      align-items: center;
-      flex-direction: column;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
   }
 
   footer div {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
   }
   footer div a img {
-      display: flex;
-      margin: 15px 30px 5px;
-      height: 70px;
-      width: 70px;
+    display: flex;
+    margin: 15px 30px 5px;
+    height: 70px;
+    width: 70px;
   }
 
   footer div a img:hover {
-      cursor: pointer;
-      opacity: 75%;
+    cursor: pointer;
+    opacity: 75%;
   }
 
   footer p {
-      font-size: 15px;
+    font-size: 15px;
   }
 </style>
