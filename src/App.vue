@@ -52,7 +52,7 @@
     <form class="containerEnvoie" action="#">
       <input type="text" id="Name" placeholder="Nom/Prénom" required><br>
       <input type="text" id="Subject" placeholder="Objet" required><br>
-      <textarea type="text" id="Message" placeholder="Votre message" autocomplete="off" rows="10" cols="10" required></textarea><br>
+      <textarea id="Message" placeholder="Votre message" autocomplete="off" rows="10" cols="10" required></textarea><br>
 
       <button type="submit">Envoyer</button>
     </form>
