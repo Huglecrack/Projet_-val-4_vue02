@@ -3,8 +3,8 @@
   <header>
     <ul>
       <li class="home"><a href="#"><img src="@/assets/images/accueil.png" alt="logoHome"></a></li>
-      <li><a href="./liensPages/indexquatrecentsquatre.html"><img src="@/assets/images/cv.png" alt="logoCV" class="headerCV"></a></li>
-      <li><a href="./liensPages/stylequatrecentsquatre.html"><img src="@/assets/images/formulaire-de-contact.png" alt="logoFormulaire" class="headerFDC"></a></li>
+      <li><a href="./liensPages/indexquatrecentsquatre.html" class="headerCV"><img src="@/assets/images/cv.png" alt="logoCV"></a></li>
+      <li><a href="./liensPages/stylequatrecentsquatre.html" class="headerFDC"><img src="@/assets/images/formulaire-de-contact.png" alt="logoFormulaire"></a></li>
     </ul>
   </header>
 
@@ -292,15 +292,23 @@
     bottom: 0;
     right: 0;
     position: fixed;
-    background-color: black;
+    background-color: rgb(0, 0, 0);
     }
 
   .container01:hover ~ .cube {
-    opacity: 0;
+    opacity: 1;
   }
 
   .container02:hover ~ .cube {
-    opacity: 0;
+    opacity: 1;
+  }
+
+  .container01:hover ~ headerCV {
+    background-color: #080808;
+  }
+
+  .container02:hover ~ {
+    background-color: #080808;
   }
 
   footer {
