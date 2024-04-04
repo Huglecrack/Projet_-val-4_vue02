@@ -20,8 +20,8 @@
         <button id="prev-slide" class="slide-button material-symbols-rounded"><</button>
 
         <ul class="image-list">
-          <ContenuCont01 class="image-item"></ContenuCont01>
-          <ContenuCont02 class="image-item"></ContenuCont02>
+          <li><ContenuCont01 class="image-item"></ContenuCont01></li>
+          <li><ContenuCont02 class="image-item"></ContenuCont02></li>
         </ul>
 
         <button id="next-slide" class="slide-button material-symbols-rounded">></button>
