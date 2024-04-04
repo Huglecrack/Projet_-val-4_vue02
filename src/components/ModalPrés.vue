@@ -1,10 +1,10 @@
 <template>
-    <div class="modalBackground" v-if="revele">
+    <div class="modalBackground" v-if="revelePrés">
 
-        <div class="overlay" v-on:click="toggleModal"></div>
+        <div class="overlay" v-on:click="toggleModalPrés"></div>
 
         <div class="modal">
-            <img src="../assets/images/fermer.png" v-on:click="toggleModal">
+            <img src="../assets/images/fermer.png" v-on:click="toggleModalPrés">
             <h3>Porte-Folio d'HUGO Leplingard</h3>
             <p>ernière mise à jour le 02 avril 2024</p>
             <p>Ce site est fait de 88.9% de Vue, 4.8% de JavaScript, 4.5% d'HTML et de 1.8% de CSS</p>
@@ -19,8 +19,8 @@
 <script>
 
     export default {
-        name: 'Modal',
-        props: ['revele', 'toggleModal']
+        name: 'ModalPrés',
+        props: ['revelePrés', 'toggleModalPrés']
     }
 
 </script>

@@ -10,43 +10,31 @@
 
   <main>
     <section>
-
       <h1>HUGO Leplingard</h1>
       <h3>porte-folio</h3>
       <p>Étudiant en développement Front-end au CEF, je m'appelle Hugo, je fais 1m84.</p>
-
     </section>
 
     <article>
+      <div class="slider-wrapper">
+        <button id="prev-slide" class="slide-button material-symbols-rounded"><</button>
 
-      <figure>
-        <h2>Curiculum Vitae</h2>
+        <ul class="image-list">
+          <ContenuCont01 class="image-item"></ContenuCont01>
+          <ContenuCont02 class="image-item"></ContenuCont02>
+        </ul>
 
-        <div class="container01">
-          <img src="./assets/images/CVfond.png" alt="CVfond" class="fond-image">
-
-          <div class="middle">
-            <img src="./assets/images/cv.png" alt="logoCV">
-          </div>
+        <button id="next-slide" class="slide-button material-symbols-rounded">></button>
+      </div>
+      <div class="slider-scrollbar">
+        <div class="scrollbar-track">
+          <div class="scrollbar-thumb"></div>
         </div>
-      </figure>
-
-      <figure>
-        <h2>Formulaire</h2>
-
-        <div class="container02">
-          <img src="./assets/images/formulaireFond.png" alt="formulaireFond"  class="fond-image">
-
-          <div class="middle">
-            <img src="./assets/images/formulaire-de-contact.png" alt="logoFormulaire">
-          </div>
-        </div>
-      </figure>
-
+      </div>
     </article>
   </main>
 
-  <contenu></contenu>
+  <ContenuPrés></ContenuPrés>
 
   <aside>
     <form class="containerEnvoie" action="#">
@@ -74,9 +62,72 @@
 </template>
 
 
-
 <script setup>
-  import Contenu from './components/contenu.vue';
+  import ContenuPrés from './components/contenuPrés.vue';
+  import ContenuCont01 from './components/modalContainer/contenuCont01.vue';
+  import ContenuCont02 from './components/modalContainer/contenuCont02.vue';
+
+  const initSlider = () => {
+    const imageList = document.querySelector(".slider-wrapper .image-list");
+    const slideButtons = document.querySelectorAll(".slider-wrapper .slide-button");
+    const sliderScrollbar = document.querySelector("figure .slider-scrollbar");
+    const scrollbarThumb = sliderScrollbar.querySelector(".scrollbar-thumb");
+    const maxScrollLeft = imageList.scrollWidth - imageList.clientWidth;
+
+    scrollbarThumb.addEventListener("mousedown", (e) => {
+      const startX = e.clientX;
+      const thumbPosition = scrollbarThumb.offsetLeft;
+      const maxThumbPosition = sliderScrollbar.getBoundingClientRect().width - scrollbarThumb.offsetWidth;
+
+      const handleMouseMove = (e) => {
+        const deltaX = e.clientX - startX;
+        const newThumbPosition = thumbPosition + deltaX;
+
+        const boundedPosition = Math.max(0, Math.min(maxThumbPosition, newThumbPosition));
+        const scrollPosition = (boundedPosition / maxThumbPosition) * maxScrollLeft;
+                
+        scrollbarThumb.style.left = `${boundedPosition}px`;
+        imageList.scrollLeft = scrollPosition;
+      }
+
+      const handleMouseUp = () => {
+        document.removeEventListener("mousemove", handleMouseMove);
+        document.removeEventListener("mouseup", handleMouseUp);
+      }
+
+      document.addEventListener("mousemove", handleMouseMove);
+      document.addEventListener("mouseup", handleMouseUp);
+    });
+
+    slideButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const direction = button.id === "prev-slide" ? -1 : 1;
+        const scrollAmount = imageList.clientWidth * direction;
+        imageList.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      });
+    });
+
+    const handleSlideButtons = () => {
+      slideButtons[0].style.display = imageList.scrollLeft <= 0 ? "none" : "flex";
+      slideButtons[1].style.display = imageList.scrollLeft >= maxScrollLeft ? "none" : "flex";
+    }
+
+    const updateScrollThumbPosition = () => {
+      const scrollPosition = imageList.scrollLeft;
+      const thumbPosition = (scrollPosition / maxScrollLeft) * (sliderScrollbar.clientWidth - scrollbarThumb.offsetWidth);
+      scrollbarThumb.style.left = `${thumbPosition}px`;
+    }
+
+    imageList.addEventListener("scroll", () => {
+      updateScrollThumbPosition();
+      handleSlideButtons();
+    });
+  }
+
+  window.addEventListener("resize", initSlider);
+  window.addEventListener("load", initSlider);
+
+
 
   function EnvoieEmail(e) {
     e.preventdefault();
@@ -103,239 +154,260 @@
 
 
 <style scoped>
-  @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400&family=Raleway:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400&family=Raleway:wght@400&display=swap');
 
-  header {
-    width: 100%;
-    top: 0;
-    left: 0;
-    background-color:#2d2d2d;
-    position: fixed;
-    z-index: 1;
-  }
+header {
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color:#2d2d2d;
+  position: fixed;
+  z-index: 1;
+}
 
-  header ul {
-    display: flex;
-    height: 100%;
-    width: 100%;
-    float: left;
-    padding: 0;
-    margin: 0;
-    transition: all 0.4s ease;
-    text-align: center;
-    justify-content: space-evenly;
-    flex-direction: row;
-  }
+header ul {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  float: left;
+  padding: 0;
+  margin: 0;
+  transition: all 0.4s ease;
+  text-align: center;
+  justify-content: space-evenly;
+  flex-direction: row;
+}
 
-  header ul li{
-    width: 33.33%;
-    padding: 20px;
-    list-style-type: none;
-  }
+header ul li{
+  width: 33.33%;
+  padding: 20px;
+  list-style-type: none;
+}
 
-  header ul li img {
-    width: 50px;
-    height: 50px;
-  }
+header ul li img {
+  width: 50px;
+  height: 50px;
+}
 
-  header ul .home {
-    background-color: #3024b0;
-  }
+header ul .home {
+  background-color: #3024b0;
+}
 
-  header ul li:hover {
+header ul li:hover {
+  background-color: #080808;
+}
+
+header a.home img:hover {
     background-color: #080808;
+}
+
+main {
+  margin-top: 150px;
+} 
+
+main article {
+  margin: 0 15%;
+  display: flex;
+  border-radius: 8px;
+  background-color: #2d2d2d;
+  box-shadow: 0 0 10px #2d2d2d;
+  flex-direction: column;
+  align-items: center;
+}
+
+.slider-wrapper {
+  position: relative;
+}
+
+.slide-button {
+  position: absolute;
+  top: 50%;
+  outline: none;
+  border: none;
+  height: 50px;
+  width: 50px;
+  z-index: 5;
+  color: #fff;
+  display: flex;
+  cursor: pointer;
+  font-size: 2.2rem;
+  background: #000;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.slide-button:hover {
+  background: #404040;
+}
+
+.slide-button#prev-slide {
+  left: -25px;
+}
+
+.slide-button#next-slide {
+  right: -25px;
+}
+
+.image-list {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 18px;
+  font-size: 0;
+  list-style: none;
+  margin-bottom: 30px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.image-list::-webkit-scrollbar {
+  display: none;
+}
+
+.image-item {
+  width: 325px;
+  height: 400px;
+  object-fit: cover;
+}
+
+.slider-scrollbar {
+  height: 24px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.scrollbar-track {
+  background: #ccc;
+  width: 100%;
+  height: 2px;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  position: relative;
+}
+
+.slider-scrollbar:hover .scrollbar-track {
+  height: 4px;
+}
+
+.scrollbar-thumb {
+  position: absolute;
+  background: #000;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  height: 100%;
+  cursor: grab;
+  border-radius: inherit;
+}
+
+.scrollbar-thumb:active {
+  cursor: grabbing;
+  height: 8px;
+  top: -2px;
+}
+
+.scrollbar-thumb::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -10px;
+  bottom: -10px;
+}
+
+@media only screen and (max-width: 1023px) {
+  .slide-button {
+    display: none !important;
   }
 
-  header a.home img:hover {
-    background-color: #080808;
+  .image-list {
+    gap: 10px;
+    margin-bottom: 15px;
+    scroll-snap-type: x mandatory;
   }
 
-  main {
-    margin-top: 150px;
-  } 
-
-  main section {
-    margin-left: 80px;
+  .image-item {
+    width: 280px;
+    height: 380px;
   }
 
-  main article {
+  .scrollbar-thumb {
+    width: 20%;
+  }
+}
+
+aside {
     display: flex;
     justify-content: center;
-  }
+}
 
-  main article h2 {
-    margin: 30px 160px;
-  }
+aside form {
+  margin-top: 130px;
+  background-color: #2d2d2d;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #2d2d2d;
+}
 
-  .container01 {
-    width: 70%;
-    height: 90%;
-    position: relative;
-    background-color: #080808;
-  }
+aside form input, textarea {
+  display: block;
+  width: 500px;
+  padding: 8px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  border: solid 2px #080808;
+  border-radius: 1%;
+}
 
-  .container02 {
-    width: 70%;
-    height: 90%;
-    position: relative;
-    background-color: #080808;
-  }
-    
-  .fond-image {
-    opacity: 1;
-    display: block;
-    width: 100%;
-    height: auto;
-    transition: .5s ease;
-    backface-visibility: hidden;
-  }
+aside form button {
+  background-color: #3024b0;
+  color: #b7b7ce; 
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
-  .container01:hover .fond-image {
-    opacity: 0.3;
-  }
+.cube {
+  opacity: 0;
+  width: 70px;
+  height: 70px;
+  bottom: 0;
+  right: 0;
+  position: fixed;
+  background-color: rgb(0, 0, 0);
+}
 
-  .container02:hover .fond-image {
-    opacity: 0.3;
-  }
+footer {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
 
-  .middle {
-    transition: .5s ease;
-    opacity: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-  }
+footer div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 
-  .container01:hover .middle {
-    opacity: 1;
-  }
+footer div a img {
+  display: flex;
+  margin: 15px 30px 5px;
+  height: 70px;
+  width: 70px;
+}
 
-  .container02:hover .middle {
-    opacity: 1;
-  }
+footer div a img:hover {
+  cursor: pointer;
+  opacity: 75%;
+}
 
-  .container01:hover ~ .headerCV {
-    background-color: #080808
-  }
+footer p {
+  font-size: 15px;
+}
 
-  .container02:hover ~ .headerFDC {
-    background-color: #080808
-  }
-
-  .middle img {
-    width: 90px;
-    height: 90px;
-  }
-
-  .middle:hover {
-    cursor: zoom-in;
-  }
-
-  .container01:active .fond-image {
-    opacity: 1;
-    z-index: 1;
-    transform:scale(1.5);
-  }
-
-  .container01:active .middle {
-    opacity: 0;
-  }
-
-  .container02:active .fond-image {
-    opacity: 1;
-    z-index: 1;
-    transform:scale(1.5);
-  }
-
-  .container02:active .middle {
-    opacity: 0;
-  }
-
-  aside {
-    display: flex;
-    justify-content: center;
-  }
-
-  aside form {
-    margin-top: 130px;
-    background-color: #2d2d2d;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px #2d2d2d;
-  }
-
-  aside form input, textarea {
-    display: block;
-    width: 500px;
-    padding: 8px;
-    margin-bottom: 16px;
-    box-sizing: border-box;
-    border: solid 2px #080808;
-    border-radius: 1%;
-  }
-
-  aside form button {
-    background-color: #3024b0;
-    color: #b7b7ce; 
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-
-  .cube {
-    opacity: 0;
-    width: 70px;
-    height: 70px;
-    bottom: 0;
-    right: 0;
-    position: fixed;
-    background-color: rgb(0, 0, 0);
-    }
-
-  .container01:hover ~ .cube {
-    opacity: 1;
-  }
-
-  .container02:hover ~ .cube {
-    opacity: 1;
-  }
-
-  .container01:hover ~ headerCV {
-    background-color: #080808;
-  }
-
-  .container02:hover ~ {
-    background-color: #080808;
-  }
-
-  footer {
-    margin-top: 30px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  }
-
-  footer div {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-  }
-  footer div a img {
-    display: flex;
-    margin: 15px 30px 5px;
-    height: 70px;
-    width: 70px;
-  }
-
-  footer div a img:hover {
-    cursor: pointer;
-    opacity: 75%;
-  }
-
-  footer p {
-    font-size: 15px;
-  }
 </style>
