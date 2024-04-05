@@ -11,7 +11,7 @@
   <main>
     <section>
       <h1>HUGO Leplingard</h1>
-      <h3>porte-folio</h3>
+      <h3>portfolio</h3>
       <p>Étudiant en développement Front-end au CEF, je m'appelle Hugo, je fais 1m84.</p>
     </section>
 

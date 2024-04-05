@@ -5,7 +5,7 @@
 
         <div class="modal">
             <img src="../assets/images/fermer.png" v-on:click="toggleModalPrés">
-            <h3>Porte-Folio d'HUGO Leplingard</h3>
+            <h3>PortFolio d'HUGO Leplingard</h3>
             <p>ernière mise à jour le 02 avril 2024</p>
             <p>Ce site est fait de 92.2% de Vue, 3.4% d'HTML, 3.2% de JavaScript et de 1.2% de CSS</p>
             <a href="http://localhost:5175/" target="_blank">Cliquez pour voir le site</a><br>
