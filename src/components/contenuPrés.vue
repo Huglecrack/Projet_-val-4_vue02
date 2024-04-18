@@ -1,7 +1,7 @@
 <template>
     <modalPrés v-bind:revelePrés="revelePrés" v-bind:toggleModalPrés="toggleModalPrés"></modalPrés>
     <div v-on:click="toggleModalPrés"> 
-        <button>Appuyez pour ouvrir le Modal</button>
+        <button>Appuyez pour ouvrir la Modal</button>
     </div>
 </template>
 
