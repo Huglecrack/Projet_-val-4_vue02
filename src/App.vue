@@ -20,8 +20,29 @@
         <button id="prev-slide" class="slide-button material-symbols-rounded"><</button>
 
         <ul class="image-list">
-          <li><ContenuCont01 class="image-item"></ContenuCont01></li>
-          <li><ContenuCont02 class="image-item"></ContenuCont02></li>
+          <li>
+            <h2>Curiculum Vitae</h2>
+
+            <div class="containerCont01">
+              <img src="@/assets/images/CVfond.png" alt="CVfond" class="fondImage01">
+
+              <div class="middleCont01">
+                  <img src="@/assets/images/cv.png" alt="logoCV" id="modale1">
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <h2>Formulaire</h2>
+
+            <div class="containerCont02">
+                <img src="@/assets/images/formulaireFond.png" alt="formulaireFond" class="fondImage02">
+
+                <div class="middleCont02">
+                    <img src="@/assets/images/formulaire-de-contact.png" alt="logoFormulaire" id="modale2">
+                </div>
+            </div>
+          </li>
         </ul>
 
         <button id="next-slide" class="slide-button material-symbols-rounded">></button>
@@ -34,7 +55,9 @@
     </article>
   </main>
 
-  <ContenuPrés></ContenuPrés>
+  <div id="modale3">
+    <button>Appuyez pour ouvrir la Modale</button>
+  </div>
 
   <aside>
     <form class="containerEnvoie" action="#">
@@ -42,7 +65,7 @@
       <input type="text" id="Subject" placeholder="Objet" required><br>
       <textarea id="Message" placeholder="Votre message" autocomplete="off" rows="10" cols="10" required></textarea><br>
 
-      <button type="submit">Envoyer</button>
+      <button id="submit">Envoyer</button>
     </form>
   </aside>
 
@@ -56,16 +79,13 @@
       <a href="https://github.com/Huglecrack/Projet_-val-4_vue02.git"><img src="@/assets/images/github.png" alt="github"></a>
     </div>
 
-    <p>Dernière mise à jour le 02 avril 2024</p>
+    <p>Dernière mise à jour le 20 avril 2024</p>
 
   </footer>
 </template>
 
 
 <script setup>
-  import ContenuPrés from './components/contenuPrés.vue';
-  import ContenuCont01 from './components/modalContainer/contenuCont01.vue';
-  import ContenuCont02 from './components/modalContainer/contenuCont02.vue';
 
   const initSlider = () => {
     const imageList = document.querySelector(".slider-wrapper .image-list");
@@ -127,28 +147,11 @@
   window.addEventListener("resize", initSlider);
   window.addEventListener("load", initSlider);
 
-
-
-  function EnvoieEmail(e) {
-    e.preventdefault();
-
-    const Name = document.getElementById('Name').value;
-    const Subject = document.getElementById('Subject').value;
-    const  Message = document.getElementById('Message').value;
-
-    Email.send({
-      Host : "smtp.elasticemail.com",
-      Username : "hleplingard04@gmail.com",
-      Password : "C318A590E2D14B0C0EBBD4B8BF3AF5F52EC2",
-      To : 'hleplingard04@gmail.com',
-      From : Name,
-      Subject : Subject,
-      Body : Message
-    }).then(
-      message => alert(message)
-    );
-    return alert('message bien envoyé');
+  const envoieMail = document.getElementById('submit');
+  if (envoieMail == onclick) {
+    alert('votre message à bien été envoyé');
   }
+
 </script>
 
 
@@ -213,6 +216,133 @@ main article {
   box-shadow: 0 0 10px #2d2d2d;
   flex-direction: column;
   align-items: center;
+}
+
+figure {
+  margin-top: 100px;
+}
+
+figure h2 {
+  padding-left: 150px;
+}
+
+.containerCont01 {
+  margin-top: 10px;
+  width: 400px;
+  height: 500px;
+  background-color: #080808;
+}
+
+.fondImage01 {
+  width: 100%;
+  height: 100%;
+}
+
+.containerCont01:hover .fondImage01 {
+  transition: 1s ease;
+  opacity: 0.3;
+}
+
+.containerCont01:hover .middleCont01 {
+  opacity: 1;
+  transition: 1s ease;
+}
+
+.containerCont01:hover + .headerCV {
+  background-color: #080808;
+}
+
+.containerCont01:hover + .headerCV {
+  background-color: #080808;
+}
+
+.containerCont01:hover + .cube {
+  opacity: 1;
+}
+
+.middleCont01 {
+  opacity: 0;
+}
+
+.middleCont01 img {
+  position: absolute;
+  top: 50%;
+  left: 19%;
+  width: 80px;
+  height: 80px;
+}
+
+.middleCont01:hover {
+   cursor: zoom-in;
+}
+
+.containerCont02 {
+  margin-top: 10px;
+  width: 400px;
+  height: 500px;
+  background-color: #080808;
+}
+
+.fondImage02 {
+  width: 100%;
+  height: 100%;
+}
+
+.containerCont02:hover .fondImage02 {
+  transition: 1s ease;
+  opacity: 0.3;
+}
+
+.containerCont02:hover .middleCont02 {
+  opacity: 1;
+  transition: 1s ease;
+}
+
+.containerCont02:hover + .headerFDC {
+  background-color: #080808;
+}
+
+.containerCont02:hover + .headerFDC {
+  background-color: #080808;
+}
+
+.containerCont02:hover + .cube {
+  opacity: 1;
+}
+
+.middleCont02 {
+  opacity: 0;
+}
+
+.middleCont02 img {
+  position: absolute;
+  top: 50%;
+  left: 54%;
+  width: 80px;
+  height: 80px;
+}
+
+.middleCont02:hover {
+  cursor: zoom-in;
+}
+ 
+.modale3{
+  right: 0;
+  left: 0;
+  margin-top: 150px;
+  display: flex;
+  justify-content: center;
+}
+
+.modale3 button {
+  font-family: 'Lato', sans-serif;
+  background-color: #3024b0;
+  color: #b7b7ce;
+  font-size: 15px;
+  padding: 15px 25px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .slider-wrapper {
