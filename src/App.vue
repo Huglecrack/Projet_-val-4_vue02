@@ -28,10 +28,10 @@
           <li>
             <h2>Curiculum Vitae</h2>
 
-            <div class="containerCont01">
+            <div class="containerModale01">
               <img src="@/assets/images/CVfond.png" alt="CVfond" class="fondImage01">
 
-              <div class="middleCont01">
+              <div class="middleModale01">
                 <img src="@/assets/images/cv.png" alt="logoCV" id="modale1" v-on:click="toggleModale01">
               </div>
             </div>
@@ -40,10 +40,10 @@
           <li>
             <h2>Formulaire</h2>
 
-            <div class="containerCont02">
+            <div class="containerModale02">
               <img src="@/assets/images/formulaireFond.png" alt="formulaireFond" class="fondImage02">
 
-              <div class="middleCont02">
+              <div class="middleModale02">
                 <img src="@/assets/images/formulaire-de-contact.png" alt="logoFormulaire" id="modale2" v-on:click="toggleModale02">
               </div>
             </div>
@@ -95,6 +95,7 @@
 <script>
 
   import Modale from './components/Modale.vue'
+  
   data (){
     return {
       reveleModale01: false
@@ -173,6 +174,18 @@
 
 
 
+  const lecube = document.getElementsByClassName ('cube')
+  const containerModale1 = document.getElementsByClassName ('containerModale01')
+  const containerModale2 = document.getElementsByClassName ('containerModale02')
+
+  containerModale1.addEventListener('mouseover', function() {
+    lecube.style.display = 'block';
+  });
+
+  containerModale2.addEventListener('mouseover', function() {
+    lecube.style.display = 'block';
+  });
+
   const envoieMail = document.getElementById('submit');
   if (envoieMail == onclick) {
     alert('votre message à bien été envoyé');
@@ -230,27 +243,6 @@ header a.home img:hover {
     background-color: #080808;
 }
 
-.modaleBackground {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2;
-}
-
-.overlay {
-    position: fixed;
-    background-color: rgb(0, 0, 0,0.7);
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-}
-
 main {
   margin-top: 150px;
 } 
@@ -273,7 +265,7 @@ figure h2 {
   padding-left: 150px;
 }
 
-.containerCont01 {
+.containerModale01 {
   margin-top: 10px;
   width: 400px;
   height: 500px;
@@ -285,33 +277,29 @@ figure h2 {
   height: 100%;
 }
 
-.containerCont01:hover .fondImage01 {
+.containerModale01:hover .fondImage01 {
   transition: 1s ease;
   opacity: 0.3;
 }
 
-.containerCont01:hover .middleCont01 {
+.containerModale01:hover .middleModale01 {
   opacity: 1;
   transition: 1s ease;
 }
 
-.containerCont01:hover + .headerCV {
+.containerModale01:hover + .headerCV {
   background-color: #080808;
 }
 
-.containerCont01:hover + .headerCV {
+.containerModale01:hover + .headerCV {
   background-color: #080808;
 }
 
-.containerCont01:hover + .cube {
-  opacity: 1;
-}
-
-.middleCont01 {
+.middleModale01 {
   opacity: 0;
 }
 
-.middleCont01 img {
+.middleModale01 img {
   position: absolute;
   top: 50%;
   left: 19%;
@@ -319,11 +307,11 @@ figure h2 {
   height: 80px;
 }
 
-.middleCont01:hover {
+.middleModale01:hover {
    cursor: zoom-in;
 }
 
-.containerCont02 {
+.containerModale02 {
   margin-top: 10px;
   width: 400px;
   height: 500px;
@@ -335,33 +323,33 @@ figure h2 {
   height: 100%;
 }
 
-.containerCont02:hover .fondImage02 {
+.containerModale02:hover .fondImage02 {
   transition: 1s ease;
   opacity: 0.3;
 }
 
-.containerCont02:hover .middleCont02 {
+.containerModale02:hover .middleModale02 {
   opacity: 1;
   transition: 1s ease;
 }
 
-.containerCont02:hover + .headerFDC {
+.containerModale02:hover + .headerFDC {
   background-color: #080808;
 }
 
-.containerCont02:hover + .headerFDC {
+.containerModale02:hover + .headerFDC {
   background-color: #080808;
 }
 
-.containerCont02:hover + .cube {
+.containerModale02:hover + .cube {
   opacity: 1;
 }
 
-.middleCont02 {
+.middleModale02 {
   opacity: 0;
 }
 
-.middleCont02 img {
+.middleModale02 img {
   position: absolute;
   top: 50%;
   left: 54%;
@@ -369,7 +357,7 @@ figure h2 {
   height: 80px;
 }
 
-.middleCont02:hover {
+.middleModale02:hover {
   cursor: zoom-in;
 }
 
@@ -549,7 +537,7 @@ aside form button {
 }
 
 .cube {
-  opacity: 0;
+  display: none;
   width: 70px;
   height: 70px;
   bottom: 0;

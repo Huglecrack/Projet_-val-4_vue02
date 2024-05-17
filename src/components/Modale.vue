@@ -46,6 +46,27 @@
 
 <style scoped>
 
+.modaleBackground01 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.overlay01 {
+    position: fixed;
+    background-color: rgb(0, 0, 0,0.7);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
 .contourFondImage01 {
     display: flex;
     position: fixed;
@@ -71,6 +92,27 @@
     height: 70%;
 }
 
+.modaleBackground02 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.overlay02 {
+    position: fixed;
+    background-color: rgb(0, 0, 0,0.7);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
 .contourFondImage02 {
     display: flex;
     position: fixed;
@@ -94,6 +136,27 @@
 .fondImage02 {
     width: 90%;
     height: 70%;
+}
+
+.modaleBackground03 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.overlay03 {
+    position: fixed;
+    background-color: rgb(0, 0, 0,0.7);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 .modale03 {
