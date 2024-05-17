@@ -8,6 +8,10 @@
     </ul>
   </header>
 
+  <Modale v-bind:reveleModale01="reveleModale01" v-bind:toggleModale01="toggleModale01"></Modale>
+  <Modale v-bind:reveleModale02="reveleModale01" v-bind:toggleModale01="toggleModale02"></Modale>
+  <Modale v-bind:reveleModale03="reveleModale01" v-bind:toggleModale01="toggleModale03"></Modale>
+
   <main>
     <section>
       <h1>HUGO Leplingard</h1>
@@ -20,6 +24,7 @@
         <button id="prev-slide" class="slide-button material-symbols-rounded"><</button>
 
         <ul class="image-list">
+
           <li>
             <h2>Curiculum Vitae</h2>
 
@@ -27,7 +32,7 @@
               <img src="@/assets/images/CVfond.png" alt="CVfond" class="fondImage01">
 
               <div class="middleCont01">
-                  <img src="@/assets/images/cv.png" alt="logoCV" id="modale1">
+                <img src="@/assets/images/cv.png" alt="logoCV" id="modale1" v-on:click="toggleModale01">
               </div>
             </div>
           </li>
@@ -36,13 +41,14 @@
             <h2>Formulaire</h2>
 
             <div class="containerCont02">
-                <img src="@/assets/images/formulaireFond.png" alt="formulaireFond" class="fondImage02">
+              <img src="@/assets/images/formulaireFond.png" alt="formulaireFond" class="fondImage02">
 
-                <div class="middleCont02">
-                    <img src="@/assets/images/formulaire-de-contact.png" alt="logoFormulaire" id="modale2">
-                </div>
+              <div class="middleCont02">
+                <img src="@/assets/images/formulaire-de-contact.png" alt="logoFormulaire" id="modale2" v-on:click="toggleModale02">
+              </div>
             </div>
           </li>
+
         </ul>
 
         <button id="next-slide" class="slide-button material-symbols-rounded">></button>
@@ -53,9 +59,10 @@
         </div>
       </div>
     </article>
+
   </main>
 
-  <div id="modale3">
+  <div class="modale3" v-on:click="toggleModale03">
     <button>Appuyez pour ouvrir la Modale</button>
   </div>
 
@@ -85,7 +92,24 @@
 </template>
 
 
-<script setup>
+<script>
+
+  import Modale from './components/Modale.vue'
+  data (){
+    return {
+      reveleModale01: false
+    }
+  },
+  component: {
+    'Modale': Modale
+  },
+  methods: {
+    toggleModale01:function () {
+      this.reveleModale01 = !this.reveleModale01
+      this.reveleModale02 = !this.reveleModale02
+      this.reveleModale03 = !this.reveleModale03
+    }
+  }
 
   const initSlider = () => {
     const imageList = document.querySelector(".slider-wrapper .image-list");
@@ -147,6 +171,8 @@
   window.addEventListener("resize", initSlider);
   window.addEventListener("load", initSlider);
 
+
+
   const envoieMail = document.getElementById('submit');
   if (envoieMail == onclick) {
     alert('votre message à bien été envoyé');
@@ -202,6 +228,27 @@ header ul li:hover {
 
 header a.home img:hover {
     background-color: #080808;
+}
+
+.modaleBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.overlay {
+    position: fixed;
+    background-color: rgb(0, 0, 0,0.7);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 main {
@@ -324,25 +371,6 @@ figure h2 {
 
 .middleCont02:hover {
   cursor: zoom-in;
-}
- 
-.modale3{
-  right: 0;
-  left: 0;
-  margin-top: 150px;
-  display: flex;
-  justify-content: center;
-}
-
-.modale3 button {
-  font-family: 'Lato', sans-serif;
-  background-color: #3024b0;
-  color: #b7b7ce;
-  font-size: 15px;
-  padding: 15px 25px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
 }
 
 .slider-wrapper {
@@ -496,6 +524,25 @@ aside form button {
   background-color: #3024b0;
   color: #b7b7ce; 
   padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modale3{
+  right: 0;
+  left: 0;
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.modale3 button {
+  font-family: 'Lato', sans-serif;
+  background-color: #3024b0;
+  color: #b7b7ce;
+  font-size: 15px;
+  padding: 15px 25px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
