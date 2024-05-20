@@ -1,16 +1,16 @@
 <template>
 
+  <Modale v-bind:reveleModale01="reveleModale01" v-bind:toggleModale01="toggleModale01"></Modale>
+  <Modale v-bind:reveleModale02="reveleModale02" v-bind:toggleModale02="toggleModale02"></Modale>
+  <Modale v-bind:reveleModale03="reveleModale03" v-bind:toggleModale03="toggleModale03"></Modale>
+
   <header>
     <ul>
       <li class="home"><a href="#"><img src="@/assets/images/accueil.png" alt="logoHome"></a></li>
-      <li><a href="./liensPages/indexquatrecentsquatre.html" class="headerCV"><img src="@/assets/images/cv.png" alt="logoCV"></a></li>
-      <li><a href="./liensPages/stylequatrecentsquatre.html" class="headerFDC"><img src="@/assets/images/formulaire-de-contact.png" alt="logoFormulaire"></a></li>
+      <li><a href="./liensPages/index404.html" class="headerCV"><img src="@/assets/images/cv.png" alt="logoCV"></a></li>
+      <li><a href="./liensPages/index404.html" class="headerFDC"><img src="@/assets/images/formulaire-de-contact.png" alt="logoFormulaire"></a></li>
     </ul>
   </header>
-
-  <Modale v-bind:reveleModale01="reveleModale01" v-bind:toggleModale01="toggleModale01"></Modale>
-  <Modale v-bind:reveleModale02="reveleModale01" v-bind:toggleModale01="toggleModale02"></Modale>
-  <Modale v-bind:reveleModale03="reveleModale01" v-bind:toggleModale01="toggleModale03"></Modale>
 
   <main>
     <section>
@@ -95,21 +95,21 @@
 <script>
 
   import Modale from './components/Modale.vue'
-  
-  data (){
-    return {
-      reveleModale01: false
-    }
-  },
-  component: {
-    'Modale': Modale
-  },
-  methods: {
-    toggleModale01:function () {
-      this.reveleModale01 = !this.reveleModale01
-      this.reveleModale02 = !this.reveleModale02
-      this.reveleModale03 = !this.reveleModale03
-    }
+
+  let reveleModale01 = false
+  let reveleModale02 = false
+  let reveleModale03 = false
+
+  function toggleModale01 () {
+    this.reveleModale01 = !this.reveleModale01
+  }
+
+  function toggleModale02 () {
+    this.reveleModale02 = !this.reveleModale02
+  }
+
+  function toggleModale03 () {
+    this.reveleModale03 = !this.reveleModale03
   }
 
   const initSlider = () => {
@@ -171,25 +171,6 @@
 
   window.addEventListener("resize", initSlider);
   window.addEventListener("load", initSlider);
-
-
-
-  const lecube = document.getElementsByClassName ('cube')
-  const containerModale1 = document.getElementsByClassName ('containerModale01')
-  const containerModale2 = document.getElementsByClassName ('containerModale02')
-
-  containerModale1.addEventListener('mouseover', function() {
-    lecube.style.display = 'block';
-  });
-
-  containerModale2.addEventListener('mouseover', function() {
-    lecube.style.display = 'block';
-  });
-
-  const envoieMail = document.getElementById('submit');
-  if (envoieMail == onclick) {
-    alert('votre message à bien été envoyé');
-  }
 
 </script>
 
