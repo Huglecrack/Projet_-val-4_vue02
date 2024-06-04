@@ -172,6 +172,12 @@
   window.addEventListener("resize", initSlider);
   window.addEventListener("load", initSlider);
 
+  const envoie = document.getElementById('submit')
+
+  if (envoie == onclick) {
+    alert ('message bien envoyé');
+  }
+
 </script>
 
 
